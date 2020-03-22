@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-sm">
+      <p class="text-center text-secondary pt-2 pb-2">World Wide Cases :</p>
+      <div class="container">
+
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center text-muted">Total Number of Cases
+            : <span class="badge badge-primary badge-pill">
+              {{dataApi.results[0].total_cases}}
+            </span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center text-muted">Total Recovered :
+            <span class="badge badge-success badge-pill ">
+              {{dataApi.results[0].total_recovered}}
+            </span> </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center text-muted"> Total Deaths : <span
+              class="badge badge-danger badge-pill ">
+              {{dataApi.results[0].total_deaths}}
+            </span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center text-muted">Total New Cases
+            today:
+            <span class="badge badge-primary badge-pill ">
+              {{dataApi.results[0].total_new_cases_today}}
+            </span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center text-muted">Total Active Cases
+            :<span class="badge badge-warning badge-pill ">
+              {{dataApi.results[0].total_active_cases}}
+            </span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center text-muted">Total Serious Cases
+            :<span class="badge badge-danger badge-pill ">
+              {{dataApi.results[0].total_serious_cases}}
+            </span></li>
+        </ul>
+      </div>
+    </div>
+    <hr />
+    <div class="col-sm">
+      <p class="text-center text-secondary pt-2 pb-2">Cases by Country Wise :</p>
+
+      <div class="container">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Select a Country</label>
+          </div>
+          <select class="custom-select" id="inputGroupSelect01" (change)="selectOption($event.target.value)">
+            <option selected>Choose...</option>
+            <option *ngFor="let country of countries" value="{{country.code}}">{{country.name}}</option>
+
+          </select>
+        </div>
+        <ul class="list-group" [hidden]="!isCountrySelected">
+          <li class="list-group-item d-flex justify-content-between align-items-center text-muted">Total Number of Cases
+            : <span class="badge badge-primary badge-pill">
+              {{dataCountry.countrydata[0].total_cases}}
+            </span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center text-muted">Total Recovered :
+            <span class="badge badge-success badge-pill ">
+              {{dataCountry.countrydata[0].total_recovered}}
+            </span> </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center text-muted"> Total Deaths : <span
+              class="badge badge-danger badge-pill ">
+              {{dataCountry.countrydata[0].total_deaths}}
+            </span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center text-muted">Total New Cases
+            today:
+            <span class="badge badge-primary badge-pill ">
+              {{dataCountry.countrydata[0].total_new_cases_today}}
+            </span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center text-muted">Total Active Cases
+            :<span class="badge badge-warning badge-pill ">
+              {{dataCountry.countrydata[0].total_active_cases}}
+            </span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center text-muted">Total Serious Cases
+            :<span class="badge badge-danger badge-pill ">
+              {{dataCountry.countrydata[0].total_serious_cases}}
+            </span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
